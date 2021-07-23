@@ -22,6 +22,7 @@ public class FoeView {
 	FoeCheckboxZiel[] checkboxZiel;
 	FoeViewActionAndFeedback actionAndFeedback;
 	FoeMoppel moppel;
+	FoeFileSave fileSave;
 	
 	public FoeView(final String fileName) {
 		this.frame = new JFrame("FoeMoppel");
@@ -32,7 +33,7 @@ public class FoeView {
 		this.frame.add(panelSouth, BorderLayout.SOUTH);
 		this.checkboxZiel = FoeCheckboxZiel.createLines(this, panelSouth);
 		this.actionAndFeedback = new FoeViewActionAndFeedback(this, panelSouth);
-		new FoeFileSave(this, panelSouth, fileName);
+		this.fileSave = new FoeFileSave(this, panelSouth, fileName);
 		
 		this.frame.pack();
 		Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
@@ -62,6 +63,7 @@ public class FoeView {
 		case KeyEvent.VK_F2: ((FoeViewKoordsLine)(this.lines[1])).button_catch(); return;
 		case KeyEvent.VK_F3: ((FoeViewKoordsLine)(this.lines[2])).button_catch(); return;
 		case KeyEvent.VK_F5: this.moppel.starten(); return;
+		case KeyEvent.VK_F8: this.fileSave.laden_click(); return;
 		}
 	}
 	

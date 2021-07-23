@@ -60,7 +60,7 @@ public class FoeFileSave {
 		return null;
 	}
 	
-	private void laden_click() {
+	public void laden_click() {
 		File file = checkFile(true);
 		if (file == null) {return;}
 		try {
