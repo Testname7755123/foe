@@ -25,16 +25,19 @@ public class FoeViewActionAndFeedback {
 		buttonStart.addActionListener(new ActionListener() {public void actionPerformed(ActionEvent evt) {
 			view.moppel.starten();
 		}});
+		buttonStart.setToolTipText("Startet den Moppelbot neu. Alle ausgewählten Gruppen werden gemoppelt. ");
 		panelInto.add(buttonStart, BorderLayout.CENTER);
 		
 		buttonWeiter.addActionListener(new ActionListener() {public void actionPerformed(ActionEvent evt) {
 			view.moppel.weiter();
 		}});
+		buttonWeiter.setToolTipText("Setzt den Moppelbot fort, nachdem er unterbrochen wurde. Bereits erledigte Gruppen werden nicht resettet");
 		panelInto.add(buttonWeiter, BorderLayout.WEST);
 		
 		buttonScannen.addActionListener(new ActionListener() {public void actionPerformed(ActionEvent evt) {
 			view.moppel.scanTest();
 		}});
+		buttonScannen.setToolTipText("Liest den aktuellen Bildschirm aus und zeigt das Ergebnis in der Zeile darüber an. ");
 		panelInto.add(buttonScannen, BorderLayout.EAST);
 		
 		JPanel panelSpieler = new JPanel(new GridLayout());

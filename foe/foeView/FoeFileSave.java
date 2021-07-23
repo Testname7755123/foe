@@ -29,10 +29,12 @@ public class FoeFileSave {
 		JPanel panelSave = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		panelSave.add(tf);
 		JButton buttonLaden = new JButton("Load");
+		buttonLaden.setToolTipText("Settings aus Datei laden. Taste F8");
 		buttonLaden.addActionListener(new ActionListener() {public void actionPerformed(ActionEvent evt) {
 			laden_click();
 		}});
 		JButton buttonSpeichern = new JButton("Save");
+		buttonSpeichern.setToolTipText("Settings in Datei speichern. ");
 		buttonSpeichern.addActionListener(new ActionListener() {public void actionPerformed(ActionEvent evt) {
 			speichern_click();
 		}});
