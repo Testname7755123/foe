@@ -22,6 +22,8 @@ public class FoeNeueZielGruppe extends FoeMoppelJob {
 		
 		if (this.sollNeuerServerGestartetWerden()) {
 			this.starteNeuenServer();
+		} else if (this.sollProgrammBeendetWerden()) {
+			System.exit(0);
 		}
 		completeSuccessful = true;
 		return false;
@@ -45,6 +47,10 @@ public class FoeNeueZielGruppe extends FoeMoppelJob {
 	
 	private boolean sollNeuerServerGestartetWerden() {
 		return this.moppel.getView().serverMinus1();
+	}
+	
+	private boolean sollProgrammBeendetWerden() {
+		return this.moppel.getView().getQuitWhenDone();
 	}
 	
 	private void starteNeuenServer() {

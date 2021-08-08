@@ -83,4 +83,13 @@ public class FoeMoppel {
 		
 	}
 
+	public void windowLostFocus(FoeCheckboxZiel checkboxManager) {
+		if (this.isActive) {
+			checkboxManager.colorWorking();
+		} else {
+			checkboxManager.colorProblem();
+		}
+		
+	}
+
 }

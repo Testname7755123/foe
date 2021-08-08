@@ -56,10 +56,11 @@ public class FoeJobGenerieren extends FoeMoppelJob {
 	
 	private int weiterMoppelnHilfeUndTaverne() {
 		int count = 0;
+		boolean taverne = this.moppel.getView().getTaverneInclusive();
 		FoeMoppelSpieler[] spieler = this.moppel.getSpieler();
 		FoeBildschirmPosition position = new FoeBildschirmPosition(this.moppel.getView());
 		for (int i = 0; i < spieler.length; i++) {
-			if (spieler[i].isZuTav()) {
+			if (spieler[i].isZuTav() && taverne) {
 				int[] xy = position.taverneXY(i);
 				FoeMoppelJob job = new FoeMoppelKlick(this.moppel, xy[0], xy[1]);
 				this.prependJob(job, 300);

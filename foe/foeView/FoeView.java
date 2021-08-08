@@ -9,6 +9,8 @@ import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowFocusListener;
 import java.util.Stack;
 
 import javax.swing.JFrame;
@@ -34,6 +36,15 @@ public class FoeView {
 		this.checkboxZiel = FoeCheckboxZiel.createLines(this, panelSouth);
 		this.actionAndFeedback = new FoeViewActionAndFeedback(this, panelSouth);
 		this.fileSave = new FoeFileSave(this, panelSouth, fileName);
+		
+		this.frame.addWindowFocusListener(new WindowFocusListener() {
+			public void windowLostFocus(WindowEvent evt) {
+				moppel.windowLostFocus(checkboxZiel[FoeCheckboxZiel.INDEX_ALWAYS_ON_TOP]);
+			}
+			public void windowGainedFocus(WindowEvent evt) {
+				checkboxZiel[FoeCheckboxZiel.INDEX_ALWAYS_ON_TOP].clicked();
+			}
+		});
 		
 		this.frame.pack();
 		Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
@@ -95,5 +106,17 @@ public class FoeView {
 		}
 		this.lines[FoeViewLine.ZEILE_SERVER].tf[0].setText(Integer.toString(anzahl));
 		return result;
+	}
+	
+	public boolean getTaverneInclusive() {
+		return this.checkboxZiel[FoeCheckboxZiel.INDEX_TAVERNE].isSelected();
+	}
+	
+	public boolean getQuitWhenDone() {
+		return this.checkboxZiel[FoeCheckboxZiel.INDEX_QUIT].isSelected();
+	}
+
+	public void setAlwaysOnTop(boolean alwaysOnTop) {
+		this.frame.setAlwaysOnTop(alwaysOnTop);
 	}
 }
