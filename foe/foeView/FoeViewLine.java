@@ -3,6 +3,8 @@ package foeView;
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -50,8 +52,31 @@ public class FoeViewLine {
 		result[ZEILE_SERVER] = new FoeViewLine(view, "Anzahl Server", panelInto, ct);
 		result[ZEILE_SERVER].tf[0].setText("1");
 		
+		addFocusListener(result);
+		
 		view.frame.add(panelInto, BorderLayout.CENTER);
 		return result;
+	}
+	
+	private static void addFocusListener(FoeViewLine[] result) {
+		final FocusListener focusListener = new FocusListener() {
+			public void focusLost(FocusEvent evt) {
+			}
+			
+			public void focusGained(FocusEvent evt) {
+				Object source = evt.getSource();
+				if (source instanceof JTextField) {
+					JTextField tf = (JTextField)(source);
+					tf.selectAll();
+				};
+			}
+		};
+		
+		for (int i = 0; i < result.length; i++) {
+			for (int j = 0; j < result[i].tf.length; j++) {
+				result[i].tf[j].addFocusListener(focusListener);
+			}
+		}
 	}
 	
 	void grabFocus() {
