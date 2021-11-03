@@ -22,13 +22,11 @@ public class FoeCheckboxZiel {
 	public static final int STATUS_OFFEN = 2+16+32;
 	int status;
 	
-	private final FoeView view;
 	private final boolean isZiel;
 	private JCheckBox checkbox;
 	String text;
 	
 	public FoeCheckboxZiel(FoeView view, String text, JPanel panelInto, boolean isZiel) {
-		this.view = view;
 		this.isZiel = isZiel;
 		this.text = text;
 		this.status = STATUS_OFFEN;
